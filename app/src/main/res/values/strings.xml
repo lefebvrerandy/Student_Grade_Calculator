@@ -41,9 +41,9 @@
     </string-array>
 
     <string-array name="semester_array">
+        <item>Spring</item>
         <item>Fall</item>
         <item>Winter</item>
-        <item>Spring</item>
     </string-array>
 
     <string-array name="year_array">
