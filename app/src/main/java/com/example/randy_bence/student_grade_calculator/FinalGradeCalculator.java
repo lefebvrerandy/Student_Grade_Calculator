@@ -145,18 +145,15 @@ public class FinalGradeCalculator extends AppCompatActivity
         // Get Weight
         TextView stuWeight = findViewById(R.id.etInputGradeRow1);
         String weightString = stuWeight.getText().toString();
-        weightString = (weightString.equals("")) ? "0" : weightString;
-        newStudent.weight= Double.parseDouble(weightString);
+        newStudent.weight= (weightString.equals("")) ? -1 : Double.parseDouble(weightString);
         // Get the Mark
         TextView stuMark = findViewById(R.id.etInputWeightRow1);
         String markString = stuMark.getText().toString();
-        markString = (markString.equals("")) ? "0" : markString;
-        newStudent.mark= Double.parseDouble(markString);
+        newStudent.mark= (markString.equals("")) ? -1 : Double.parseDouble(markString);
         // Get the Final mark
         TextView stuFinal = findViewById(R.id.tvFinalResultRow1);
         String finalString = stuFinal.getText().toString();
-        finalString = (finalString.equals("")) ? "0" : finalString;
-        newStudent.finalMark= Double.parseDouble(finalString);
+        newStudent.finalMark= (finalString.equals("")) ? -1 : Double.parseDouble(finalString);
         // Get Course Name
         TextView stuCourse = findViewById(R.id.evCourseName);
         newStudent.courseName = stuCourse.getText().toString();
