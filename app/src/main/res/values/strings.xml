@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Grade Calculator</string>
+    <string name="title_activity_final_grade_calculator">Final Grade Calculator</string>
+
+
+
+    <!-- Entity strings in FinalGradeCalculator -->
+    <string name="saveButton">Save</string>
+    <string name="loadButton">Load</string>
+    <string name="newButton">Add New</string>
+    <string name="finalResult"></string>
+    <string name="inputWeight"></string>
+    <string name="InputGrade"></string>
+    <string name="InputName"></string>
+    <string name="headerType">Type</string>
+    <string name="headerName">Name</string>
+    <string name="headerWeight">Weight</string>
+    <string name="headerMark">Mark (%)</string>
+    <string name="headerFinal">Final</string>
+    <string name="calculateButton">Calculate</string>
+    <string name="ReportCard">Report Card</string>
+    <string name="addMoreButton">Add More Rows</string>
+    <string name="rules">Please avoid leaving blanks, or using negative numbers</string>
+    <string name="Semester">Semester</string>
+    <string name="Year">Year</string>
+    <string name="CourseName">Course Name</string>
+    <string name="textCourseName"></string>
+
+
+    <!-- In FinalGradeCalculator, the student can categorize their work using the following options-->
+    <string-array name="Categories">
+        <item>Assignment</item>
+        <item>Essay</item>
+        <item>Exam</item>
+        <item>Module</item>
+        <item>Project</item>
+        <item>Presentation</item>
+        <item>Quiz</item>
+        <item>Report</item>
+        <item>Test</item>
+    </string-array>
+
+    <string-array name="semester_array">
+        <item>Fall</item>
+        <item>Winter</item>
+        <item>Spring</item>
+    </string-array>
+
+    <string-array name="year_array">
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+    </string-array>
+
+
+
+</resources>
