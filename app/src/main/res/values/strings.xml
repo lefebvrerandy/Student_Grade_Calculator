@@ -17,10 +17,10 @@
     <string name="headerWeight">Weight</string>
     <string name="headerMark">Mark (%)</string>
     <string name="headerFinal">Final</string>
-    <string name="calculateButton">Calculate</string>
+    <string name="calculateButton">Calculate/Save</string>
     <string name="ReportCard">Report Card</string>
     <string name="addMoreButton">Add More Rows</string>
-    <string name="rules">Please avoid leaving blanks, or using negative numbers</string>
+    <string name="rules">Please avoid using negative numbers</string>
     <string name="Semester">Semester</string>
     <string name="Year">Year</string>
     <string name="CourseName">Course Name</string>

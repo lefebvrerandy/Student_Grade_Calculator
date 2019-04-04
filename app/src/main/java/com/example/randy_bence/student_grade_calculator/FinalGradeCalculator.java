@@ -131,6 +131,45 @@ public class FinalGradeCalculator extends AppCompatActivity
         //Print the calculate value into the textview
         TextView result = findViewById(R.id.tvFinalResultRow1);
         result.setText(String.valueOf(calculatedResult));
+
+
+
+        /* *********************************************************/
+        /*                  Create Student Object                  */
+        /* *********************************************************/
+        //Store the information into a Student Class
+        Student newStudent = new Student();
+        // Get Name
+        TextView stuName = findViewById(R.id.etInputNameRow1);
+        newStudent.name= stuName.getText().toString();
+        // Get Weight
+        TextView stuWeight = findViewById(R.id.etInputGradeRow1);
+        String weightString = stuWeight.getText().toString();
+        weightString = (weightString.equals("")) ? "0" : weightString;
+        newStudent.weight= Double.parseDouble(weightString);
+        // Get the Mark
+        TextView stuMark = findViewById(R.id.etInputWeightRow1);
+        String markString = stuMark.getText().toString();
+        markString = (markString.equals("")) ? "0" : markString;
+        newStudent.mark= Double.parseDouble(markString);
+        // Get the Final mark
+        TextView stuFinal = findViewById(R.id.tvFinalResultRow1);
+        String finalString = stuFinal.getText().toString();
+        finalString = (finalString.equals("")) ? "0" : finalString;
+        newStudent.finalMark= Double.parseDouble(finalString);
+        // Get Course Name
+        TextView stuCourse = findViewById(R.id.evCourseName);
+        newStudent.courseName = stuCourse.getText().toString();
+        // Get the Semester
+        Spinner stuSemester = findViewById(R.id.spinnerSemester);
+        newStudent.semester = stuSemester.getSelectedItem().toString();
+        // Get the Year
+        Spinner stuYear = findViewById(R.id.spinnerYear);
+        newStudent.year = stuYear.getSelectedItem().toString();
+        /* *********************************************************/
+        /*                  End Student Object                     */
+        /* *********************************************************/
+
     }
 
 
@@ -145,9 +184,8 @@ public class FinalGradeCalculator extends AppCompatActivity
      *  CodingInFlow. (nd). Write Text File to Internal Storage. Retrieved Feb 6, 2019, from https://codinginflow
      *  .com/tutorials/android/write-text-file-to-internal-storage
      */
-    public void onClickSave(View saveButton)
+/*    public void onClickSave(View saveButton)
     {
-
         //Grab the content from each field, in each  row
         TextView result = findViewById(R.id.tvFinalResultRow1);
         String savedResult = result.getText().toString();
@@ -180,7 +218,7 @@ public class FinalGradeCalculator extends AppCompatActivity
             }
         }
     }
-
+*/
 
 
     /*
@@ -193,7 +231,7 @@ public class FinalGradeCalculator extends AppCompatActivity
      *  CodingInFlow. (nd). Write Text File to Internal Storage. Retrieved Feb 6, 2019, from https://codinginflow
      *  .com/tutorials/android/write-text-file-to-internal-storage
      */
-    public void onClickLoad(View loadButton)
+/*    public void onClickLoad(View loadButton)
     {
         FileInputStream readStream = null;
         try
@@ -238,5 +276,5 @@ public class FinalGradeCalculator extends AppCompatActivity
                 }
             }
         }
-    }
+    }*/
 }

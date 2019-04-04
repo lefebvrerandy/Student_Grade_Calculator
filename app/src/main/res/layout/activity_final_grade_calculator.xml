@@ -236,32 +236,7 @@ tools:context=".FinalGradeCalculator">
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <!-- Save Button -->
-                <Button
-                    android:id="@+id/btnSave"
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="onClickSave"
-                    android:text="@string/saveButton" />
-
-
-                <!-- Load Button -->
-                <Button
-                    android:id="@+id/btnLoad"
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="onClickLoad"
-                    android:text="@string/loadButton" />
-            </TableRow>
+                android:layout_height="match_parent"/>
 
             <TableRow
                 android:layout_width="match_parent"
