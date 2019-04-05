@@ -21,6 +21,7 @@
             android:label="@string/title_activity_final_grade_calculator"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ConvertGrade"></activity>
+        <activity android:name=".PreviousSemesterView"></activity>
     </application>
 
 </manifest>

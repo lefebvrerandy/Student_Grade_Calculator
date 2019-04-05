@@ -61,6 +61,7 @@ public class MainMenu extends AppCompatActivity
         arrayList.add("");
         arrayList.add("Final Grade Calculator");
         arrayList.add("Grade Conversion Chart");
+        arrayList.add("Previous Semester View");
 
 
 
@@ -92,6 +93,12 @@ public class MainMenu extends AppCompatActivity
                         Intent startAnotherActivity = new Intent(MainMenu.this, ConvertGrade.class);
                         startActivity(startAnotherActivity);
                         break;
+
+                    case 3:
+                        Intent startThirdActivity = new Intent(MainMenu.this, PreviousSemesterView.class);
+                        startActivity(startThirdActivity);
+                        break;
+
 
                     default:
                         break;
