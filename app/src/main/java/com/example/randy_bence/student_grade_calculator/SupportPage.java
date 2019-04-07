@@ -1,6 +1,7 @@
 package com.example.randy_bence.student_grade_calculator;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,25 +9,25 @@ import android.view.View;
 
 
 /*
- *  CLASS            :
- *  DESCRIPTION     :
+ *  CLASS           : SupportPage
+ *  DESCRIPTION     : Class for the support page
  */
 public class SupportPage extends AppCompatActivity {
 
 
 
     /*
-     *  METHOD            : onCreate
+     *  METHOD         : onCreate
      *  PARAMETERS     : Bundle savedInstanceState : Take the saved state data when re-creating
      *   controls on the screen
-     *  DESCRIPTION      :
-     *  RETURN              : void : Has no return value
+     *  DESCRIPTION    : This sets up the support page with the proper toolbar
+     *  RETURN         : void : Has no return value
      */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_previous_semester);
+        setContentView(R.layout.activity_support_page);
 
         // Set the tool bar we created in layouts and change the title
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -48,6 +49,17 @@ public class SupportPage extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainMenu.class));
             }
         });
+    }
 
+
+    /*
+     *  METHOD         : onCreate
+     *  PARAMETERS     : View v :
+     *   controls on the screen
+     *  DESCRIPTION    : This sets up the support page with the proper toolbar
+     *  RETURN         : void : Has no return value
+     */
+    protected void CallSupport(View v) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01234567890")));
     }
 }

@@ -93,11 +93,11 @@ public class FinalGradeCalculator extends AppCompatActivity
 
 
     /*
-     *  METHOD            : CalculateButton
+     *  METHOD        : CalculateButton
      *  PARAMETERS    : Vew view : Contains data on the view which triggered the event
-     *  DESCRIPTION     : This method is used to grab the numerical values in the weight and mark
+     *  DESCRIPTION   : This method is used to grab the numerical values in the weight and mark
      *       sections of the page, and calculate the final result before displaying the number
-     *  RETURN             :  void : Has no return value
+     *  RETURN        : void : Has no return value
      */
     public void onClickCalculate(View calculateButton)
     {
