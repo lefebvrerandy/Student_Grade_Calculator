@@ -10,7 +10,7 @@ import android.view.View;
 
 /*
  *  CLASS           : SupportPage
- *  DESCRIPTION     : Class for the support page
+ *  DESCRIPTION     : Classes for the support page
  */
 public class SupportPage extends AppCompatActivity {
 

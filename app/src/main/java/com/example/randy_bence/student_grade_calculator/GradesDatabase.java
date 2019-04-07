@@ -1,8 +1,8 @@
 package com.example.randy_bence.student_grade_calculator;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,7 +24,7 @@ public class GradesDatabase{
     public static final String Semester_Name = "SemseterName";
     public static final int Semester_Name_Column = 1;
 
-    // Class Table constants
+    // Classes Table constants
     public static final String Class_Table = "Class";
 
     public static final String Class_ID = "_id";
@@ -32,6 +32,9 @@ public class GradesDatabase{
 
     public static final String Class_Name = "ClassName";
     public static final int Class_Name_Column = 1;
+
+    public static final String Class_weight = "ClassWeight";
+    public static final int Class_Weight_Column = 2;
 
     // Grades table constants
     public static final String Grades_Table = "Grades";
@@ -57,14 +60,15 @@ public class GradesDatabase{
     public static final String Create_Class_Table =
             "CREATE TABLE " + Class_Table + " (" +
                     Class_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Class_Name + " TEXT NOT NULL UNIQUE);";
+                    Class_Name + " TEXT NOT NULL UNIQUE," +
+                    Class_weight + "INTEGER NOT NULL);";
 
     public static final String Create_Grades_Table =
             "CREATE TABLE " + Grades_Table + " (" +
                     Grades_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Grades_Semester_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Grades_Class_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Final_Grade + " TEXT NOT NULL UNIQUE);";
+                    Final_Grade + " REAL NOT NULL);";
 
     // DROP TABLE Statments
     public static final String Drop_Semester_Table =
@@ -136,5 +140,113 @@ public class GradesDatabase{
     }
 
     // Public methods
- 
+    public ArrayList<Semester> getSemesters()
+    {
+        ArrayList<Semester> semesters  = new ArrayList <Semester>();
+        openReadableDB();
+        Cursor cursor = SQLiteDatabase.query(Semester_Table, null, null, null, null, null,null);
+        while(cursor.moveToNext())
+        {
+            Semester semester = new Semester();
+            semester.setId(cursor.getInt(Semester_ID_Column));
+            semester.setName(cursor.getString(Semester_Name_Column));
+            semesters.add(semester);
+        }
+        closeCursor(cursor);
+        closeDatabase();
+        return semesters;
+    }
+
+    public Semester getSemester(String name)
+    {
+        String whereStatement = Semester_Name + "= ?";
+        String[] whereArguments = {name};
+
+        openReadableDB();
+        Cursor cursor = SQLiteDatabase.query(Semester_Table, null, whereStatement, whereArguments, null, null, null);
+        Semester semester = null;
+        cursor.moveToFirst();
+        semester = new Semester(cursor.getInt(Semester_ID_Column), cursor.getString(Semester_Name_Column));
+        this.closeCursor(cursor);
+        this.closeDatabase();
+        return semester;
+    }
+
+    public ArrayList<Classes> getClasses()
+    {
+        ArrayList<Classes> classesList = new ArrayList<Classes>();
+        openReadableDB();
+        Cursor cursor = SQLiteDatabase.query(Class_Table, null, null, null, null, null, null);
+        while(cursor.moveToNext())
+        {
+            Classes classses = new Classes();
+            classses.setClassId(cursor.getInt(Class_ID_Column));
+            classses.setName(cursor.getString(Class_Name_Column));
+            classses.setClassWeight(cursor.getInt(Class_Weight_Column));
+            classesList.add(classses);
+        }
+        closeCursor(cursor);
+        closeDatabase();
+        return classesList;
+    }
+
+    public Classes getClasses(String name)
+    {
+        String whereStatement = Class_Name + "= ?";
+        String[] whereArguments = {name};
+
+        openReadableDB();
+        Cursor cursor = SQLiteDatabase.query(Class_Table, null, whereStatement, whereArguments, null, null, null);
+        Classes classes = null;
+        cursor.moveToFirst();
+        classes = new Classes(cursor.getInt(Class_ID_Column), cursor.getString(Class_Name_Column), cursor.getInt(Class_Weight_Column));
+        this.closeCursor(cursor);
+        this.closeDatabase();
+        return classes;
+    }
+
+    // Create tables
+    public long createSemester(Semester semester)
+    {
+        ContentValues cv = new ContentValues();
+        cv.put(Semester_ID, semester.getId());
+        cv.put(Semester_Name, semester.getName());
+
+        this.openWriteableDB();
+        long rowID = SQLiteDatabase.insert(Semester_Table, null, cv);
+        this.closeDatabase();
+
+        return rowID;
+    }
+
+    public long createClass(Classes classesObject)
+    {
+        ContentValues cv = new ContentValues();
+        cv.put(Class_ID, classesObject.getClassId());
+        cv.put(Class_Name, classesObject.getName());
+        cv.put(Class_weight, classesObject.getClassWeight());
+
+        this.openWriteableDB();
+        long rowID = SQLiteDatabase.insert(Class_Table, null, cv);
+        this.closeDatabase();
+
+        return rowID;
+    }
+
+    public long createGrade(Grade grade)
+    {
+        ContentValues cv = new ContentValues();
+        cv.put(Grades_ID, grade.getGradeId());
+        cv.put(Grades_Semester_ID, grade.getSemesterId());
+        cv.put(Grades_Class_ID, grade.getClassId());
+        cv.put(Final_Grade, grade.getFinalGrade());
+
+        this.openWriteableDB();
+        long rowID = SQLiteDatabase.insert(Grades_Table, null , cv);
+        this.closeDatabase();
+
+        return  rowID;
+    }
+
+
 }
