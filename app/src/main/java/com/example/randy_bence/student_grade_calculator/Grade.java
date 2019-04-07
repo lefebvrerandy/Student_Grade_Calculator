@@ -8,6 +8,10 @@ public class Grade {
     private double finalGrade;
 
     // Constructor
+    public Grade()
+    {
+
+    }
     public Grade(int gradeId, int semesterId, int classId, double finalGrade)
     {
         this.gradeId = gradeId;

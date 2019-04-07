@@ -1,18 +1,22 @@
 package com.example.randy_bence.student_grade_calculator;
 
-public class Class {
+public class Classes {
     private int classId;
     private String name;
     private int classWeight;
 
     // Constructors
-    public Class(int classId, int classWeight)
+    public Classes()
+    {
+
+    }
+    public Classes(int classId, int classWeight)
     {
       this.classId = classId;
       this.classWeight = classWeight;
     }
 
-    public Class (int classId, String name, int classWeight)
+    public Classes(int classId, String name, int classWeight)
     {
         this.classId = classId;
         this.classWeight = classWeight;

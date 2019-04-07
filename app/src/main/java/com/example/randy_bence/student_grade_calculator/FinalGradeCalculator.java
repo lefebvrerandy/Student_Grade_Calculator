@@ -137,7 +137,7 @@ public class FinalGradeCalculator extends AppCompatActivity
         /* *********************************************************/
         /*                  Create Student Object                  */
         /* *********************************************************/
-        //Store the information into a Student Class
+        //Store the information into a Student Classes
         Student newStudent = new Student();
         // Get Name
         TextView stuName = findViewById(R.id.etInputNameRow1);
