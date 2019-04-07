@@ -54,6 +54,8 @@
     </string-array>
 
     <string name="openBrowserString">More Information</string>
+    <string name="callSupport">Call Support</string>
+    <string name="createdBy">The Student Grade Calculator is created by Bence Karner, Felicia Neeb, Randy Lefebvre and Travis Roy</string>
 
 
 </resources>

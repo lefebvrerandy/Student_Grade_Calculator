@@ -69,9 +69,7 @@ public class MainMenu extends AppCompatActivity
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(arrayAdapter);
-
-
-
+        
 
         // Create onclick listeners with a switch statement to send them to the right activity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
