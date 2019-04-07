@@ -14,7 +14,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /*
@@ -59,21 +65,39 @@ public class PreviousSemesterView extends AppCompatActivity {
             }
         });
 
-        // Get values from semester_array and store on screen
-        String[] strArray = getResources().getStringArray(R.array.semester_array);
-        TextView tv = findViewById(R.id.textView2);
-        tv.setText("");
-        for (String s: strArray) {
-            tv.append(s + "\n");
+        // Get to string arrays. The year and semester
+        String[] array_Semester = getResources().getStringArray(R.array.semester_array);
+        String[] array_Year = getResources().getStringArray(R.array.year_array);
+
+        // Append to the list each semester for each year
+        final ArrayList<String> arrayList = new ArrayList<>();
+        for (String year: array_Year) {
+            for (String semester: array_Semester) {
+                arrayList.add(year + " " + semester);
+            }
         }
 
-        //  Get values from year_array and store on screen
-        strArray = getResources().getStringArray(R.array.year_array);
-        tv = findViewById(R.id.textView5);
-        tv.setText("");
-        for (String s: strArray) {
-            tv.append(s + "\n");
-        }
+        // Create a list view
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        ListView listview = findViewById(R.id.lv_Semester_List);
+        listview.setAdapter(arrayAdapter);
+
+
+        // Create onclick listeners with to switch to a new activity once a decision has been made
+        // we will also send over their selection to the new activity so that we can use that string
+        // to search the database for that information
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
+            {
+                Intent startNewActivity = new Intent(PreviousSemesterView.this, ViewGrades.class);
+                String selection = arrayList.get(position);
+                startNewActivity.putExtra("message", selection);
+                startActivity(startNewActivity);
+            }
+        });
+
 
     }
 }
