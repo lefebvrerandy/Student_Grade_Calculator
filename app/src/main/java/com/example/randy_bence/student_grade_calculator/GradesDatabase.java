@@ -1,5 +1,8 @@
 package com.example.randy_bence.student_grade_calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,7 +18,7 @@ public class GradesDatabase{
     //Semester table constants
     public static final String Semester_Table = "Semester";
 
-    public static final String Semester_ID = "SemseterID";
+    public static final String Semester_ID = "_id";
     public static final int Semester_ID_Column = 0;
 
     public static final String Semester_Name = "SemseterName";
@@ -24,7 +27,7 @@ public class GradesDatabase{
     // Class Table constants
     public static final String Class_Table = "Class";
 
-    public static final String Class_ID = "ClassID";
+    public static final String Class_ID = "_id";
     public static final int Class_ID_Column = 0;
 
     public static final String Class_Name = "ClassName";
@@ -33,7 +36,7 @@ public class GradesDatabase{
     // Grades table constants
     public static final String Grades_Table = "Grades";
 
-    public static final String Grades_ID = "GradesID";
+    public static final String Grades_ID = "_id";
     public static final int Grades_ID_Column = 0;
 
     public static final String Grades_Semester_ID = "SemesterID";
@@ -72,6 +75,7 @@ public class GradesDatabase{
 
     public static final String Drop_Grade_Table =
             "DROP TABLE IF EXISTS " + Grades_Table;
+
 
     public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -132,5 +136,5 @@ public class GradesDatabase{
     }
 
     // Public methods
-
+ 
 }
