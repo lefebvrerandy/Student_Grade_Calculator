@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".ViewGrades">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <include layout="@layout/toolbar"
+            android:id="@+id/toolbar"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                style="@style/Divider">
+
+                <TextView
+                    android:id="@+id/GPATitle"
+                    style="@style/RowStyle"
+                    android:text="GPA"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/LetterTitle"
+                    style="@style/RowStyle"
+                    android:text="Letter Grade"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/PercentTitle"
+                    style="@style/RowStyle"
+                    android:text="Percentage Grade"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/GPA1"
+                    style="@style/RowStyle"
+                    android:text="4.33"/>
+
+                <TextView
+                    android:id="@+id/Letter1"
+                    style="@style/RowStyle"
+                    android:text="A+"/>
+
+                <TextView
+                    android:id="@+id/Percent1"
+                    style="@style/RowStyle"
+                    android:text="97% - 100%"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                style="@style/Divider">
+
+                <TextView
+                    android:id="@+id/GPA2"
+                    style="@style/RowStyle"
+                    android:text="4.00"/>
+
+                <TextView
+                    android:id="@+id/Letter2"
+                    style="@style/RowStyle"
+                    android:layout_gravity="center"
+                    android:text="A "/>
+
+                <TextView
+                    android:id="@+id/Percent2"
+                    style="@style/RowStyle"
+                    android:text="93% - 96%"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/GPA3"
+                    style="@style/RowStyle"
+                    android:text="3.67"/>
+
+                <TextView
+                    android:id="@+id/Letter3"
+                    style="@style/RowStyle"
+                    android:text="A-"/>
+
+                <TextView
+                    android:id="@+id/Percent3"
+                    style="@style/RowStyle"
+                    android:text="90% - 92%"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                style="@style/Divider">
+
+                <TextView
+                    android:id="@+id/GPA4"
+                    style="@style/RowStyle"
+                    android:text="3.33"/>
+
+                <TextView
+                    android:id="@+id/Letter4"
+                    style="@style/RowStyle"
+                    android:text="B+"/>
+
+                <TextView
+                    android:id="@+id/Percent4"
+                    style="@style/RowStyle"
+                    android:text="87% - 89%"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/GPA5"
+                    style="@style/RowStyle"
+                    android:text="3.00"/>
+
+                <TextView
+                    android:id="@+id/Letter5"
+                    style="@style/RowStyle"
+                    android:layout_gravity="center"
+                    android:text="B "/>
+
+                <TextView
+                    android:id="@+id/Percent5"
+                    style="@style/RowStyle"
+                    android:text="83% - 86%"/>
+            </TableRow>
+
+        </TableLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
