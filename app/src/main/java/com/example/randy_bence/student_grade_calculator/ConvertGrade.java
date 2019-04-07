@@ -10,6 +10,7 @@
 
 package com.example.randy_bence.student_grade_calculator;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -58,5 +59,9 @@ public class ConvertGrade extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainMenu.class));
             }
         });
+    }
+
+    protected void OpenBrowser(View view) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ouac.on.ca/guide/omsas-conversion-table")));
     }
 }
