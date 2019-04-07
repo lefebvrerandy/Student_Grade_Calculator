@@ -33,6 +33,9 @@ public class GradesDatabase{
     public static final String Class_Name = "ClassName";
     public static final int Class_Name_Column = 1;
 
+    public static final String Class_weight = "ClassWeight";
+    public static final int Class_Weight_Column = 2;
+
     // Grades table constants
     public static final String Grades_Table = "Grades";
 
@@ -57,14 +60,15 @@ public class GradesDatabase{
     public static final String Create_Class_Table =
             "CREATE TABLE " + Class_Table + " (" +
                     Class_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Class_Name + " TEXT NOT NULL UNIQUE);";
+                    Class_Name + " TEXT NOT NULL UNIQUE," +
+                    Class_weight + "INTEGER NOT NULL);";
 
     public static final String Create_Grades_Table =
             "CREATE TABLE " + Grades_Table + " (" +
                     Grades_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Grades_Semester_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Grades_Class_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Final_Grade + " TEXT NOT NULL UNIQUE);";
+                    Final_Grade + " REAL NOT NULL);";
 
     // DROP TABLE Statments
     public static final String Drop_Semester_Table =
@@ -136,5 +140,5 @@ public class GradesDatabase{
     }
 
     // Public methods
- 
+
 }
