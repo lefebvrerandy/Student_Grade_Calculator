@@ -22,7 +22,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ConvertGrade"></activity>
         <activity android:name=".PreviousSemesterView"></activity>
-        <activity android:name=".ViewGrades"></activity>
+        <activity android:name=".SupportPage"></activity>
     </application>
 
 </manifest>

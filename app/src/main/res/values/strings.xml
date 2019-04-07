@@ -53,6 +53,7 @@
         <item>2019</item>
     </string-array>
 
+    <string name="openBrowserString">More Information</string>
 
 
 </resources>

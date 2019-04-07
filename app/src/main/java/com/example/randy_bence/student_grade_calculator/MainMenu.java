@@ -43,7 +43,7 @@ public class MainMenu extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_manu);
+        setContentView(R.layout.activity_main_menu);
 
         // Set the tool bar we created in layouts and change the title
         ListView listView;
@@ -62,6 +62,7 @@ public class MainMenu extends AppCompatActivity
         arrayList.add("Final Grade Calculator");
         arrayList.add("Grade Conversion Chart");
         arrayList.add("Previous Semester View");
+        arrayList.add("Support");
 
 
 
@@ -99,6 +100,10 @@ public class MainMenu extends AppCompatActivity
                         startActivity(startThirdActivity);
                         break;
 
+                    case 4:
+                        Intent startFourthActivity = new Intent(MainMenu.this, SupportPage.class);
+                        startActivity(startFourthActivity);
+                        break;
 
                     default:
                         break;
