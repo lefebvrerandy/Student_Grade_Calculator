@@ -3,6 +3,7 @@ package com.example.randy_bence.student_grade_calculator;
 public class Semester {
     private int id;
     private String name;
+    private double GPA;
 
     // Constructors
     public  Semester()
@@ -14,6 +15,7 @@ public class Semester {
     {
         this.name = name;
     }
+
     public Semester(int id, String name)
     {
         this.name = name;
@@ -25,9 +27,15 @@ public class Semester {
     {
         this.id = id;
     }
+
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public void setGPA(double GPA)
+    {
+        this.GPA = GPA;
     }
 
     // Getters
@@ -38,5 +46,9 @@ public class Semester {
     public String getName()
     {
         return name;
+    }
+    public double getGPA()
+    {
+        return GPA;
     }
 }

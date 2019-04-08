@@ -27,15 +27,6 @@ tools:context=".FinalGradeCalculator">
 
 
                 <!-- Name Header -->
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/headerName"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textStyle="bold" />
 
 
                 <!-- Weight Header -->
@@ -76,18 +67,6 @@ tools:context=".FinalGradeCalculator">
 
 
             <TableRow style="@style/GradeCalculatorRowStyle">
-
-
-                <EditText
-                    android:id="@+id/etInputNameRow1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:importantForAutofill="noExcludeDescendants"
-                    android:inputType="textPersonName"
-                    android:text="@string/InputName"
-                    android:textAlignment="viewStart"
-                    android:textStyle="bold" />
 
 
                 <EditText

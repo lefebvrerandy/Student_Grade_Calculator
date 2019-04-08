@@ -154,78 +154,70 @@ public class FinalGradeCalculator extends AppCompatActivity
         TextView result = findViewById ( R.id.tvFinalResultRow1 );
         result.setText ( String.valueOf ( calculatedResult ) );
 
+        // Database Object
+        GradesDatabase database = new GradesDatabase(this);
+
+        // Store the information into the Semester table
+        Semester semester = new Semester();
+
+        // Get the Semester
+        Spinner stuSemester = findViewById ( R.id.spinnerSemester );
+        String SemesterTime = stuSemester.getSelectedItem ().toString ();
 
 
-        /* *********************************************************/
-        /*                  Create Student Object                                                           */
-        /* *********************************************************/
-        //Store the information into a Student Class
-        // Get Name
-        TextView stuName = findViewById ( R.id.etInputNameRow1 );
-        if ( stuName.getText ().toString ().isEmpty () )
-        {
-            studentMarks.name = "Marc";
-        } else
-        {
-            studentMarks.name = stuName.getText ().toString ();
-        }
+        // Get the Year
+        Spinner stuYear = findViewById ( R.id.spinnerYear );
+        String SemesterYear = stuYear.getSelectedItem ().toString ();
 
+        String semesterName = SemesterTime + " " + SemesterYear;
+        semester.setName(semesterName);
 
-        // Get Weight
-        TextView stuWeight = findViewById ( R.id.etInputGradeRow1 );
-        String weightString = stuWeight.getText ().toString ();
-        studentMarks.weight = (weightString.equals ( "" )) ? -1 : Double.parseDouble ( weightString );
+        long insertID = database.insertIntoSemester(semester);
 
+        // Store the information into the Grades table
+        Grade grade = new Grade();
 
-        // Get the Mark
-        TextView stuMark = findViewById ( R.id.etInputWeightRow1 );
-        String markString = stuMark.getText ().toString ();
-        studentMarks.mark = (markString.equals ( "" )) ? -1 : Double.parseDouble ( markString );
+        grade.setSemesterId(semester.getId());
 
-
-        // Get the Final mark
-        TextView stuFinal = findViewById ( R.id.tvFinalResultRow1 );
-        String finalString = stuFinal.getText ().toString ();
-        studentMarks.finalMark = (finalString.equals ( "" )) ? -1 : Double.parseDouble ( finalString );
-
+        String courseName;
 
         // Get Course Name
         TextView stuCourse = findViewById ( R.id.evCourseName );
         if ( stuCourse.getText ().toString ().isEmpty () )
         {
-            studentMarks.courseName = "Mobile Application Development";
+            courseName = "Mobile Application Development";
         } else
         {
-            studentMarks.courseName = stuCourse.getText ().toString ();
+            courseName = stuCourse.getText ().toString ();
         }
 
+        grade.setClassNAme(courseName);
 
-        // Get the Semester
-        Spinner stuSemester = findViewById ( R.id.spinnerSemester );
-        studentMarks.semester = stuSemester.getSelectedItem ().toString ();
+        // Get Weight
+        TextView stuWeight = findViewById ( R.id.etInputGradeRow1 );
+        String weightString = stuWeight.getText ().toString ();
+        int weight = (weightString.equals ( "" )) ? -1 : Integer.parseInt ( weightString );
 
+        grade.setClassWeight(weight);
 
-        // Get the Year
-        Spinner stuYear = findViewById ( R.id.spinnerYear );
-        studentMarks.year = stuYear.getSelectedItem ().toString ();
+        // Get the Mark
+        TextView stuMark = findViewById ( R.id.etInputWeightRow1 );
+        String markString = stuMark.getText ().toString ();
+        double finalGrade = (markString.equals ( "" )) ? -1 : Double.parseDouble ( markString );
 
+        grade.setFinalGrade(finalGrade);
 
+        long insertId = database.insertIntoGrade(grade);
+
+        // Get the Final mark
+        TextView stuFinal = findViewById ( R.id.tvFinalResultRow1 );
+        String finalString = stuFinal.getText ().toString ();
+        double SemesterGPA = (finalString.equals ( "" )) ? -1 : Double.parseDouble ( finalString );
+
+        semester.setGPA(SemesterGPA);
+        long updateId = database.updateSemester(semester);
         //Save the file asynchronously
         MyAsyncTask AsyncPrint = new MyAsyncTask ();
         AsyncPrint.doInBackground ();
-        /* *********************************************************/
-        /*                  End Student Object                     */
-        /* *********************************************************/
-        //STORE INFORMATION INTO THE DATABASE
-        // We need to store the student objects variables into the database here
-        //Student Object Breakdown
-        //String name;
-        //double weight;
-        //double mark;
-        //double finalMark;
-        //String courseName;
-        //String semester;
-        //String year;
-        //DAL(newStudent);
     }
 }

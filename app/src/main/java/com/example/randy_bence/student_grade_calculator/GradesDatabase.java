@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -12,6 +13,7 @@ import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.util.Log;
 
 public class GradesDatabase{
+
     // Database Constants
     public static final String Database_Name = "GradesDatabase.db";
     public static final int Database_Version = 1;
@@ -24,6 +26,9 @@ public class GradesDatabase{
 
     public static final String Semester_Name = "SemseterName";
     public static final int Semester_Name_Column = 1;
+
+    public static final String GPA = "GAP";
+    public static final int GPA_Column = 2;
 
     // Grades table constants
     public static final String Grades_Table = "Grades";
@@ -47,7 +52,8 @@ public class GradesDatabase{
     public static final String Create_Semester_Table =
             "CREATE TABLE " + Semester_Table  + " (" +
                     Semester_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Semester_Name + " TEXT NOT NULL UNIQUE);";
+                    Semester_Name + " TEXT NOT NULL UNIQUE, " +
+                    GPA + "REAL); ";
 
     public static final String Create_Grades_Table =
             "CREATE TABLE " + Grades_Table + " (" +
@@ -55,7 +61,7 @@ public class GradesDatabase{
                    Grades_Semester_ID + " INTEGER NOT NULL, " +
                     Class_Name + " TEXT, " +
                     Class_Weight + " INTEGER NOT NULL, " +
-                    Final_Grade + " DOUBLE NOT NULL);";
+                    Final_Grade + " REAL NOT NULL);";
 
     // DROP TABLE Statments
     public static final String Drop_Semester_Table =
@@ -133,6 +139,7 @@ public class GradesDatabase{
             Semester semester = new Semester();
             semester.setId(cursor.getInt(Semester_ID_Column));
             semester.setName(cursor.getString(Semester_Name_Column));
+            semester.setGPA(cursor.getDouble(GPA_Column));
             semesters.add(semester);
         }
         closeCursor(cursor);
@@ -227,13 +234,22 @@ public class GradesDatabase{
     // INSERT INTO tables
     public long insertIntoSemester(Semester semester)
     {
-        ContentValues cv = new ContentValues();
-        cv.put(Semester_ID, semester.getId());
-        cv.put(Semester_Name, semester.getName());
+        long rowID;
+        if (CheckSemesterRecord(semester.getId()))
+        {
+            rowID = updateSemester(semester);
+        }
+        else
+            {
+            ContentValues cv = new ContentValues();
+            cv.put(Semester_ID, semester.getId());
+            cv.put(Semester_Name, semester.getName());
+            cv.put(GPA, semester.getGPA());
 
-        this.openWriteableDB();
-        long rowID = SQLiteDatabase.insert(Semester_Table, null, cv);
-        this.closeDatabase();
+            this.openWriteableDB();
+           rowID = SQLiteDatabase.insert(Semester_Table, null, cv);
+            this.closeDatabase();
+        }
 
         return rowID;
     }
@@ -241,17 +257,23 @@ public class GradesDatabase{
 
     public long insertIntoGrade(Grade grade)
     {
-        ContentValues cv = new ContentValues();
-        cv.put(Grade_ID, grade.getGradeId());
-        cv.put(Grades_Semester_ID, grade.getSemesterId());
-        cv.put(Class_Name, grade.getClassNAme());
-        cv.put(Class_Weight, grade.getClassWeight());
-        cv.put(Final_Grade, grade.getFinalGrade());
+        long rowID;
+        if(CheckGradeRecord(grade.getGradeId()))
+        {
+            rowID = updateGrade(grade);
+        }
+        else {
+            ContentValues cv = new ContentValues();
+            cv.put(Grade_ID, grade.getGradeId());
+            cv.put(Grades_Semester_ID, grade.getSemesterId());
+            cv.put(Class_Name, grade.getClassNAme());
+            cv.put(Class_Weight, grade.getClassWeight());
+            cv.put(Final_Grade, grade.getFinalGrade());
 
-        this.openWriteableDB();
-        long rowID = SQLiteDatabase.insert(Grades_Table, null , cv);
-        this.closeDatabase();
-
+            this.openWriteableDB();
+            rowID = SQLiteDatabase.insert(Grades_Table, null, cv);
+            this.closeDatabase();
+        }
         return  rowID;
     }
 
@@ -260,6 +282,7 @@ public class GradesDatabase{
         ContentValues cv = new ContentValues();
         cv.put(Semester_ID, semester.getId());
         cv.put(Semester_Name, semester.getName());
+        cv.put(GPA, semester.getGPA());
 
         String whereStatement = Semester_Table + " = ?";
         String[] whereArguments = {String.valueOf(semester.getId())};
@@ -312,5 +335,33 @@ public class GradesDatabase{
         this.closeDatabase();
 
         return rowCount;
+    }
+
+    public boolean CheckSemesterRecord(int id)
+    {
+        String whereStatement = Semester_ID + " = ?";
+        String[] whereArguments = { String.valueOf(id)};
+
+        this.openWriteableDB();
+        Cursor cursor = SQLiteDatabase.query(Semester_Table, null, whereStatement, whereArguments, null, null, null);
+        boolean exists = (cursor.getCount() > 0);
+        this.closeCursor(cursor);
+        this.closeDatabase();
+
+        return exists;
+    }
+
+    public  boolean CheckGradeRecord(int id)
+    {
+        String whereStatement = Grade_ID + " = ?";
+        String[] whereArguments = { String.valueOf(id)};
+
+        this.openWriteableDB();
+        Cursor cursor = SQLiteDatabase.query(Grades_Table, null, whereStatement, whereArguments, null, null, null);
+        boolean exists = (cursor.getCount() > 0);
+        this.closeCursor(cursor);
+        this.closeDatabase();
+
+        return exists;
     }
 }

@@ -9,6 +9,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class ViewGrades extends AppCompatActivity {
 
@@ -38,7 +41,8 @@ public class ViewGrades extends AppCompatActivity {
         // Set the tool bar we created in layouts and change the title
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(semester + " " + year);
+        String title = semester + " " + year;
+        getSupportActionBar().setTitle(title);
 
         /* ***************************************/
         /*  We now have semester and year that   */
@@ -69,6 +73,19 @@ public class ViewGrades extends AppCompatActivity {
         /*  row and place them into the tablelayout*/
         /* *****************************************/
 
+
+        // Database Object
+        GradesDatabase database = new GradesDatabase(this);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
+        // display all grades
+        ArrayList<Grade> grades = database.getGrades(title);
+        for (Grade grade : grades)
+        {
+          //  stringBuilder.append(grade.getGradeId() + )
+        }
+
         // Add rows to the table layout
         TableLayout tl = findViewById(R.id.grades_table);
         TableRow tr = new TableRow(this);
@@ -81,6 +98,7 @@ public class ViewGrades extends AppCompatActivity {
         /*      Then store that information into the student class      */
         /*      Then place that stored information into a new row       */
         // Set labels to their values
+
         course.setText(" SEF ");
         weight.setText(" 80 ");
         finalMark.setText(" 100 ");
