@@ -136,7 +136,8 @@ public class FileIO
      *  DESCRIPTION     : This method is used to respond to the users action once they choose to grant or deny access for the app to write to their device.
      *  RETURN             :  void : Has no return value
      */
-    private boolean  onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults, Context activityContext)
+    private boolean  onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                                @NonNull int[] grantResults, Activity activityContext)
     {
         boolean permissionGranted = false;
 
