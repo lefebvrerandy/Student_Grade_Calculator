@@ -217,6 +217,7 @@ public class FinalGradeCalculator extends AppCompatActivity
         semester.setGPA(SemesterGPA);
         // ong updateId = database.updateSemester(semester);
 
+
         //Save the file asynchronously
         MyAsyncTask AsyncPrint = new MyAsyncTask ();
         AsyncPrint.doInBackground ();
