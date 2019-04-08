@@ -235,7 +235,7 @@ public class GradesDatabase{
     public long insertIntoSemester(Semester semester)
     {
         long rowID;
-        if (CheckSemesterRecord(semester.getId()))
+        if (CheckSemesterRecord(semester.getName()))
         {
             rowID = updateSemester(semester);
         }
@@ -258,7 +258,7 @@ public class GradesDatabase{
     public long insertIntoGrade(Grade grade)
     {
         long rowID;
-        if(CheckGradeRecord(grade.getGradeId()))
+        if(CheckGradeRecord(grade.getClassNAme()))
         {
             rowID = updateGrade(grade);
         }
@@ -337,10 +337,10 @@ public class GradesDatabase{
         return rowCount;
     }
 
-    public boolean CheckSemesterRecord(int id)
+    public boolean CheckSemesterRecord(String semesterName)
     {
-        String whereStatement = Semester_ID + " = ?";
-        String[] whereArguments = { String.valueOf(id)};
+        String whereStatement = Semester_Name + " = ?";
+        String[] whereArguments = { semesterName};
 
         this.openWriteableDB();
         Cursor cursor = SQLiteDatabase.query(Semester_Table, null, whereStatement, whereArguments, null, null, null);
@@ -351,10 +351,10 @@ public class GradesDatabase{
         return exists;
     }
 
-    public  boolean CheckGradeRecord(int id)
+    public  boolean CheckGradeRecord(String className)
     {
         String whereStatement = Grade_ID + " = ?";
-        String[] whereArguments = { String.valueOf(id)};
+        String[] whereArguments = {className};
 
         this.openWriteableDB();
         Cursor cursor = SQLiteDatabase.query(Grades_Table, null, whereStatement, whereArguments, null, null, null);
