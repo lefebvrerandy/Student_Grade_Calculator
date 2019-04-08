@@ -19,7 +19,7 @@ public class ViewGrades extends AppCompatActivity {
      *  METHOD            : onCreate
      *  PARAMETERS     : Bundle savedInstanceState : Take the saved state data when re-creating
      *   controls on the screen
-     *  DESCRIPTION      :
+     *  DESCRIPTION      : Database code adapted from module 7 example
      *  RETURN              : void : Has no return value
      */
 
@@ -65,50 +65,36 @@ public class ViewGrades extends AppCompatActivity {
             }
         });
 
-        /* ***************************************/
-        /*  We now need to find out how many       */
-        /*  rows we have in the database linking   */
-        /*  the grades that were stored  .         */
-        /*  We can then iterating through each     */
-        /*  row and place them into the tablelayout*/
-        /* *****************************************/
-
 
         // Database Object
         GradesDatabase database = new GradesDatabase(this);
-        StringBuilder stringBuilder = new StringBuilder();
 
-        ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
-        // display all grades
-        ArrayList<Grade> grades = database.getGrades(title);
-        for (Grade grade : grades)
-        {
-          //  stringBuilder.append(grade.getGradeId() + )
+        // Temp grade object to check if the semester has data in it
+        Grade gradeTemp = new Grade();
+        if(database.CheckSemesterRecord(gradeTemp.getGradeId())) {
+            // Add rows to the table layout
+            TableLayout tl = findViewById(R.id.grades_table);
+            TableRow tr = new TableRow(this);
+            TextView course = new TextView(this);
+
+            TextView weight = new TextView(this);
+
+            TextView finalMark = new TextView(this);
+
+            ArrayList<Grade> grades = database.getGrades(title);
+            for (Grade grade : grades) {
+                course.setText(grade.getClassNAme());
+                weight.setText(grade.getClassWeight());
+                finalMark.setText(String.valueOf(grade.getFinalGrade()));
+
+                // Add the textviews to the row
+                tr.addView(course);
+                tr.addView(weight);
+                tr.addView(finalMark);
+
+                // Add the row to the table layout
+                tl.addView(tr);
+            }
         }
-
-        // Add rows to the table layout
-        TableLayout tl = findViewById(R.id.grades_table);
-        TableRow tr = new TableRow(this);
-        TextView course = new TextView(this);;
-        TextView weight = new TextView(this);;
-        TextView finalMark = new TextView(this);;
-
-        /*  This is debug to show how to dynamically add a row          */
-        /*  Here we should check the database for each row stored       */
-        /*      Then store that information into the student class      */
-        /*      Then place that stored information into a new row       */
-        // Set labels to their values
-
-        course.setText(" SEF ");
-        weight.setText(" 80 ");
-        finalMark.setText(" 100 ");
-
-        // Add the textviews to the row
-        tr.addView(course);
-        tr.addView(weight);
-        tr.addView(finalMark);
-
-        // Add the row to the table layout
-        tl.addView(tr);
     }
 }
