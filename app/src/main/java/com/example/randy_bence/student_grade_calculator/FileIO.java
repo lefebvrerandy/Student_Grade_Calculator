@@ -148,6 +148,8 @@ public class FileIO
                 if ( isExternalStorageWritable () )
                 {
                     permissionGranted = true;
+                    Toast.makeText ( activityContext, "Permission Granted, Please click Save again",
+                            Toast.LENGTH_LONG ).show ();
                 }
                 else
                 {
