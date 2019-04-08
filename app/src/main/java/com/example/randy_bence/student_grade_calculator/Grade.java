@@ -2,9 +2,10 @@ package com.example.randy_bence.student_grade_calculator;
 
 public class Grade {
 
-    private int gradeId;
+    private  int gradeId;
     private int semesterId;
-    private int classId;
+    private String classNAme;
+    private int classWeight;
     private double finalGrade;
 
     // Constructor
@@ -12,18 +13,19 @@ public class Grade {
     {
 
     }
-    public Grade(int gradeId, int semesterId, int classId, double finalGrade)
+    public Grade(int gradeId, int semesterId, String classNAme, int classWeight, double finalGrade)
     {
         this.gradeId = gradeId;
         this.semesterId = semesterId;
-        this.classId = classId;
+        this.classNAme = classNAme;
+        this.classWeight = classWeight;
         this.finalGrade = finalGrade;
     }
 
-    // Getter
+    // Getters
     public int getGradeId()
     {
-        return  gradeId;
+        return gradeId;
     }
 
     public int getSemesterId()
@@ -31,14 +33,19 @@ public class Grade {
         return semesterId;
     }
 
-    public int getClassId()
+    public String getClassNAme()
     {
-        return  classId;
+        return classNAme;
+    }
+
+    public int getClassWeight()
+    {
+        return classWeight;
     }
 
     public double getFinalGrade()
     {
-        return finalGrade;
+        return  finalGrade;
     }
 
     // Setters
@@ -52,9 +59,14 @@ public class Grade {
         this.semesterId = semesterId;
     }
 
-    public void setClassId(int classId)
+    public void setClassNAme (String ClassName)
     {
-        this.classId = classId;
+        this.classNAme = classNAme;
+    }
+
+    public void setClassWeight (int classWeight)
+    {
+        this.classWeight = classWeight;
     }
 
     public void setFinalGrade(double finalGrade)
