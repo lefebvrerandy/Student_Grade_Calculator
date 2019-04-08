@@ -207,7 +207,7 @@ public class FinalGradeCalculator extends AppCompatActivity
 
         grade.setFinalGrade(finalGrade);
 
-        long insertId = database.insertIntoGrade(grade);
+        //long insertId = database.insertIntoGrade(grade);
 
         // Get the Final mark
         TextView stuFinal = findViewById ( R.id.tvFinalResultRow1 );
@@ -215,7 +215,8 @@ public class FinalGradeCalculator extends AppCompatActivity
         double SemesterGPA = (finalString.equals ( "" )) ? -1 : Double.parseDouble ( finalString );
 
         semester.setGPA(SemesterGPA);
-        long updateId = database.updateSemester(semester);
+        // ong updateId = database.updateSemester(semester);
+
         //Save the file asynchronously
         MyAsyncTask AsyncPrint = new MyAsyncTask ();
         AsyncPrint.doInBackground ();
