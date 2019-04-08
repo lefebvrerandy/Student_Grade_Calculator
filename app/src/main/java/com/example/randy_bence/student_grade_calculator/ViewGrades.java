@@ -70,8 +70,8 @@ public class ViewGrades extends AppCompatActivity {
         GradesDatabase database = new GradesDatabase(this);
 
         // Temp grade object to check if the semester has data in it
-        Grade gradeTemp = new Grade();
-        if(database.CheckSemesterRecord(gradeTemp.getGradeId())) {
+        Semester semesterTemp = new Semester();
+        if(database.CheckSemesterRecord(semesterTemp.getName())) {
             // Add rows to the table layout
             TableLayout tl = findViewById(R.id.grades_table);
             TableRow tr = new TableRow(this);
