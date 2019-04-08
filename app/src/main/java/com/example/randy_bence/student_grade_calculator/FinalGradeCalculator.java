@@ -10,6 +10,7 @@
 package com.example.randy_bence.student_grade_calculator;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -166,9 +167,19 @@ public class FinalGradeCalculator extends AppCompatActivity
         /* *********************************************************/
         /*                  End Student Object                     */
         /* *********************************************************/
+        //STORE INFORMATION INTO THE DATABASE
+        // We need to store the student objects variables into the database here
+                    //Student Object Breakdown
+                    //String name;
+                    //double weight;
+                    //double mark;
+                    //double finalMark;
+                    //String courseName;
+                    //String semester;
+                    //String year;
+        //DAL(newStudent);
 
     }
-
 
 
     /*

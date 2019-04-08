@@ -79,7 +79,7 @@ public class ViewGrades extends AppCompatActivity {
         /*  This is debug to show how to dynamically add a row          */
         /*  Here we should check the database for each row stored       */
         /*      Then store that information into the student class      */
-        /*      Then place that stored information into a new row           */
+        /*      Then place that stored information into a new row       */
         // Set labels to their values
         course.setText(" SEF ");
         weight.setText(" 80 ");
