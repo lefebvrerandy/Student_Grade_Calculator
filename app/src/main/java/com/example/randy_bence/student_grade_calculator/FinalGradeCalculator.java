@@ -154,6 +154,36 @@ public class FinalGradeCalculator extends AppCompatActivity
         TextView result = findViewById ( R.id.tvFinalResultRow1 );
         result.setText ( String.valueOf ( calculatedResult ) );
 
+        /* *********************************************************/
+        /*                  Create Student Object                  */
+        /* *********************************************************/
+        //Store the information into a Student Classes
+        Student newStudent = new Student();
+        // Get Name
+        TextView stuName = findViewById(R.id.etInputNameRow1);
+        newStudent.name= stuName.getText().toString();
+        // Get Weight
+        TextView stuWeight = findViewById(R.id.etInputGradeRow1);
+        String weightString = stuWeight.getText().toString();
+        newStudent.weight= (weightString.equals("")) ? -1 : Double.parseDouble(weightString);
+        // Get the Mark
+        TextView stuMark = findViewById(R.id.etInputWeightRow1);
+        String markString = stuMark.getText().toString();
+        newStudent.mark= (markString.equals("")) ? -1 : Double.parseDouble(markString);
+        // Get the Final mark
+        TextView stuFinal = findViewById(R.id.tvFinalResultRow1);
+        String finalString = stuFinal.getText().toString();
+        newStudent.finalMark= (finalString.equals("")) ? -1 : Double.parseDouble(finalString);
+        // Get Course Name
+        TextView stuCourse = findViewById(R.id.evCourseName);
+        newStudent.courseName = stuCourse.getText().toString();
+        // Get the Semester
+        Spinner stuSemester = findViewById(R.id.spinnerSemester);
+        newStudent.semester = stuSemester.getSelectedItem().toString();
+        // Get the Year
+        Spinner stuYear = findViewById(R.id.spinnerYear);
+        newStudent.year = stuYear.getSelectedItem().toString();
+
         // Database Object
         GradesDatabase database = new GradesDatabase(this);
 
