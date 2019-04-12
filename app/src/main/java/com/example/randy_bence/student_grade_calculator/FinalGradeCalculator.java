@@ -159,9 +159,6 @@ public class FinalGradeCalculator extends AppCompatActivity
         /* *********************************************************/
         //Store the information into a Student Classes
         Student newStudent = new Student();
-        // Get Name
-        TextView stuName = findViewById(R.id.etInputNameRow1);
-        newStudent.name= stuName.getText().toString();
         // Get Weight
         TextView stuWeight = findViewById(R.id.etInputGradeRow1);
         String weightString = stuWeight.getText().toString();
@@ -191,12 +188,12 @@ public class FinalGradeCalculator extends AppCompatActivity
         Semester semester = new Semester();
 
         // Get the Semester
-        Spinner stuSemester = findViewById ( R.id.spinnerSemester );
+         stuSemester = findViewById ( R.id.spinnerSemester );
         String SemesterTime = stuSemester.getSelectedItem ().toString ();
 
 
         // Get the Year
-        Spinner stuYear = findViewById ( R.id.spinnerYear );
+         stuYear = findViewById ( R.id.spinnerYear );
         String SemesterYear = stuYear.getSelectedItem ().toString ();
 
         String semesterName = SemesterTime + " " + SemesterYear;
@@ -212,7 +209,7 @@ public class FinalGradeCalculator extends AppCompatActivity
         String courseName;
 
         // Get Course Name
-        TextView stuCourse = findViewById ( R.id.evCourseName );
+         stuCourse = findViewById ( R.id.evCourseName );
         if ( stuCourse.getText ().toString ().isEmpty () )
         {
             courseName = "Mobile Application Development";
@@ -224,15 +221,15 @@ public class FinalGradeCalculator extends AppCompatActivity
         grade.setClassNAme(courseName);
 
         // Get Weight
-        TextView stuWeight = findViewById ( R.id.etInputGradeRow1 );
-        String weightString = stuWeight.getText ().toString ();
+         stuWeight = findViewById ( R.id.etInputGradeRow1 );
+         weightString = stuWeight.getText ().toString ();
         int weight = (weightString.equals ( "" )) ? -1 : Integer.parseInt ( weightString );
 
         grade.setClassWeight(weight);
 
         // Get the Mark
-        TextView stuMark = findViewById ( R.id.etInputWeightRow1 );
-        String markString = stuMark.getText ().toString ();
+       stuMark = findViewById ( R.id.etInputWeightRow1 );
+       markString = stuMark.getText ().toString ();
         double finalGrade = (markString.equals ( "" )) ? -1 : Double.parseDouble ( markString );
 
         grade.setFinalGrade(finalGrade);
@@ -240,8 +237,8 @@ public class FinalGradeCalculator extends AppCompatActivity
        // long insertId = database.insertIntoGrade(grade);
 
         // Get the Final mark
-        TextView stuFinal = findViewById ( R.id.tvFinalResultRow1 );
-        String finalString = stuFinal.getText ().toString ();
+     stuFinal = findViewById ( R.id.tvFinalResultRow1 );
+     finalString = stuFinal.getText ().toString ();
         double SemesterGPA = (finalString.equals ( "" )) ? -1 : Double.parseDouble ( finalString );
 
         semester.setGPA(SemesterGPA);

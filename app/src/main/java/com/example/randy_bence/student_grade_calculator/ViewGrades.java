@@ -66,7 +66,31 @@ public class ViewGrades extends AppCompatActivity {
         });
 
 
-        // Database Object
+        // Add rows to the table layout
+        TableLayout tl = findViewById(R.id.grades_table);
+        TableRow tr = new TableRow(this);
+        TextView course = new TextView(this);;
+        TextView weight = new TextView(this);;
+        TextView finalMark = new TextView(this);;
+
+        /*  This is debug to show how to dynamically add a row          */
+        /*  Here we should check the database for each row stored       */
+        /*      Then store that information into the student class      */
+        /*      Then place that stored information into a new row       */
+        // Set labels to their values
+        course.setText(" SEF ");
+        weight.setText(" 80 ");
+        finalMark.setText(" 100 ");
+
+        // Add the textviews to the row
+        tr.addView(course);
+        tr.addView(weight);
+        tr.addView(finalMark);
+
+        // Add the row to the table layout
+        tl.addView(tr);
+
+        /*// Database Object
         GradesDatabase database = new GradesDatabase(this);
 
         // Temp grade object to check if the semester has data in it
@@ -95,6 +119,6 @@ public class ViewGrades extends AppCompatActivity {
                 // Add the row to the table layout
                 tl.addView(tr);
             }
-        }
+     }*/
     }
 }
